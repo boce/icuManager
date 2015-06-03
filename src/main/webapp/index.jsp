@@ -11,7 +11,7 @@
 
 请输入姓名：<input type="text" name="userName" />
 
-<input type="submit" value="提交2" />
+<input type="submit" value="提交3" />
 
 <br />
 

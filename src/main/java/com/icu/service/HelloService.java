@@ -1,6 +1,6 @@
 package com.icu.service;
 
-public interface IhelloService {
+public interface HelloService {
 	
 	public String getSayHello();
 

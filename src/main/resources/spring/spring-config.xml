@@ -50,6 +50,30 @@
     </bean>
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+    
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="userRealm" />
+    </bean>
+    
+    <!-- 項目自定义的Realm -->
+    <bean id="userRealm" class="com.icu.auth.UserRealm" ></bean>
+    
+    <!-- Shiro Filter -->
+    <bean id="shiroFilter"
+        class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+        <property name="loginUrl" value="/" />
+        <property name="successUrl" value="/system/main" />
+        <property name="unauthorizedUrl" value="/system/error" />
+        <property name="filterChainDefinitions">
+            <value>
+            /login = anon
+            /validateCode = anon
+            /** = authc
+            </value>
+        </property>
+    </bean>
 	
     
 </beans>
